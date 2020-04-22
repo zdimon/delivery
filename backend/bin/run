@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Deploing delivery project"
 . ./venv/bin/activate
 case "$#" in
 0 )
