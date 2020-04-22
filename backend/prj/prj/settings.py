@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'market'
+    'market',
+    'drf_yasg',
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DATA_DIR = os.path.join(BASE_DIR,'../init_data')
+
+ASGI_APPLICATION = "market.router.application"

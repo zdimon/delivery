@@ -14,9 +14,12 @@ class Command(BaseCommand):
         Product.objects.all().delete()
 
         print('Start importing from excel %s' % DATA_DIR)
+        # open the book
         wb = load_workbook(DATA_DIR+'/price.xlsx')
+        # extract the first sheet
         sheet = wb.get_sheet_by_name(wb.get_sheet_names()[0])
         cat = None
+        
         for cnt in range(1,sheet.max_row+1):
             item = sheet.cell(row=cnt, column=3).value
             id = sheet.cell(row=cnt, column=2).value
