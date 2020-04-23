@@ -12,7 +12,7 @@ class CategorySerializer(serializers.HyperlinkedModelSerializer):
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+        API endpoint that allows users to read and modify categories.
     """
     queryset = Category.objects.all().order_by('-id')
     serializer_class = CategorySerializer
