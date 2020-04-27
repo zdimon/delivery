@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'market',
     'drf_yasg',
-    'channels'
+    'channels',
+    'easy_thumbnails',
+    'image_cropping' 
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
 }
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
+
