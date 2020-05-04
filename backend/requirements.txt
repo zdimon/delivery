@@ -14,3 +14,4 @@ bs4
 requests
 easy-thumbnails
 django-image-cropping==1.4.0
+django-cors-headers

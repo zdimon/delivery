@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     'drf_yasg',
     'channels',
     'easy_thumbnails',
-    'image_cropping' 
+    'image_cropping' ,
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -55,6 +57,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'prj.urls'
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
@@ -137,3 +141,4 @@ REST_FRAMEWORK = {
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
+BACKEND_URL = 'http://localhost:8787'
