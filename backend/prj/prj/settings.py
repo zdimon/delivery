@@ -135,7 +135,7 @@ ASGI_APPLICATION = "market.ws_route_app.application"
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 50
 }
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')

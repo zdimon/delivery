@@ -45,6 +45,10 @@ class Category(models.Model):
     def image_tag(self):
         return mark_safe('<img src="%s" />' % self.image.url)
 
+    @property
+    def image_url(self):
+        return BACKEND_URL+self.image.url
+
     def __str__(self):
         return self.name
 
@@ -77,7 +81,7 @@ class Product(models.Model):
 
     @property
     def get_small_image(self):
-        return mark_safe('<img src="%s" />' % self.get_small_image_url()) 
+        return mark_safe('<img src="%s" />' % self.get_small_image_url) 
 
     @property
     def get_small_image_url(self):

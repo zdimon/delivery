@@ -3,13 +3,17 @@ from rest_framework import viewsets, mixins
 from rest_framework import permissions
 from rest_framework.decorators import action
 
-from market.models import Category
+from market.models import Category, SubCategory
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Category
+        fields = ['id', 'name', 'image_url']
+        
+class SubCategorySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Category
         fields = ['id', 'name']
-
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """
