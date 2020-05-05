@@ -10,10 +10,10 @@ import { environment } from './../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  name = 'Dima';
+
   productList = {results: []};
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.getProductList();
   }
 
@@ -21,7 +21,6 @@ export class AppComponent {
 
      this.http.get(`${environment.backendUrl}v1/market/product_list`).subscribe((res: any) => {
         this.productList = res;
-        console.log(this.productList);
      });
   }
 
