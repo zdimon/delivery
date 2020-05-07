@@ -1,9 +1,11 @@
 
 
+
 import { Component } from '@angular/core';
 
 import { ApiService } from './api.service';
 
+import { BasketService } from './basket.service';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +15,21 @@ import { ApiService } from './api.service';
 export class AppComponent {
 
   categories = [];
+  basket = [];
 
-  constructor(private apiService: ApiService) {
+  constructor(
+    private apiService: ApiService,
+    private basketService: BasketService
+    ) {
     this.apiService.getCategoryList().subscribe((res: any) => {
       this.categories = res;
     });
+
+    this.basketService.basket$.subscribe((data) => {
+        this.basket = data;
+      }
+    );
+    
   }
 
 }

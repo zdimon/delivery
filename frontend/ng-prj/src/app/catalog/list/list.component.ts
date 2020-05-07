@@ -1,8 +1,11 @@
 
+
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from './../../api.service';
+
+import { BasketService } from './../../basket.service';
 
 @Component({
   selector: 'app-list',
@@ -16,7 +19,8 @@ export class ListComponent implements OnInit {
   constructor(
     private http: HttpClient, 
     private apiService: ApiService,
-    private route: ActivatedRoute){
+    private route: ActivatedRoute,
+    private basketService: BasketService){
     
     this.route.params.subscribe(params => {
       if (params.hasOwnProperty('catId')) {
@@ -30,14 +34,7 @@ export class ListComponent implements OnInit {
       }
       
     });
-    // this.router.events.subscribe((event) => {
-    //   if (event instanceof NavigationEnd) {
-    //      // console.log(this.route.snapshot.paramMap.get('catId'));
 
-
-    //   }
-      
-    // });
   }
 
   ngOnInit() {
@@ -49,7 +46,11 @@ export class ListComponent implements OnInit {
         this.productList = res;
     });
 
-
  }
+
+  doAddToBasket(id: number) {
+    this.basketService.addToBasket(id);
+  }
+
 
 }

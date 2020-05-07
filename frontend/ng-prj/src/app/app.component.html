@@ -15,9 +15,23 @@
       fxLayoutGap="10px"
     >
       <button mat-raised-button [routerLink]="'catalog'"  color="primary">Catalog</button>
-      <button mat-raised-button  [routerLink]="'basket'" color="warn">Basket</button>
-      <button mat-raised-button  [routerLink]="'profile'" color="warn">Profile</button>
+      <button 
+        mat-raised-button  
+        [routerLink]="'basket'" 
+        color="primary"
+        *ngIf="basket.length > 0"
+        matBadge="{{ basket.length }}" 
+        matBadgePosition="before" 
+        matBadgeColor="accent"
+        >
+        <mat-icon>add_shopping_cart</mat-icon>
+        Корзина
+      </button>
+
+
       <button mat-raised-button [matMenuTriggerFor]="category">Категории</button>
+
+
 
       
         <mat-menu #category="matMenu">

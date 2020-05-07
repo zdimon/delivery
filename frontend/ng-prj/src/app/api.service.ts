@@ -24,4 +24,9 @@ export class ApiService {
     return this.http.get(`${environment.backendUrl}v1/market/category_list`);
   }
 
+  getBasketInfo(pars){
+    const data = {ids: pars};
+    return this.http.post(`${environment.backendUrl}v1/market/basket_list`,data);
+  }
+
 }

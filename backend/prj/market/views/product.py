@@ -6,12 +6,7 @@ from market.views.category import CategorySerializer, SubCategorySerializer
 
 from market.filters import ProductFilter
 
-class ProductSerializer(serializers.ModelSerializer):
-    category = CategorySerializer()
-    subcategory = SubCategorySerializer()
-    class Meta:
-        model = Product
-        fields = ['id', 'name', 'category', 'subcategory', 'get_small_image_url'] 
+from market.serializers.product import ProductSerializer
 
 class ProductListView(ListModelMixin,GenericAPIView):
     queryset = Product.objects.all()
