@@ -5,15 +5,40 @@ from rest_framework.decorators import action
 
 from market.models import Category, SubCategory
 
-class CategorySerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Category
-        fields = ['id', 'name', 'image_url']
+
         
 class SubCategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Category
+        model = SubCategory
         fields = ['id', 'name']
+
+class CategorySerializer(serializers.HyperlinkedModelSerializer):
+    subcategory = serializers.SerializerMethodField()
+
+    def get_subcategory(self,obj):
+        out = []
+        for item in SubCategory.objects.filter(category=obj):
+            out.append(SubCategorySerializer(item).data)
+        return out
+
+    class Meta:
+        model = Category
+        fields = ['id', 'name', 'image_url', 'subcategory']
+
+
+
+from rest_framework.generics import ListAPIView
+
+class CategoryListView(ListAPIView):
+    serializer_class = CategorySerializer
+    pagination_class = None
+
+    def get_queryset(self):
+        return Category.objects.all().order_by('-id')
+
+
+
+
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """

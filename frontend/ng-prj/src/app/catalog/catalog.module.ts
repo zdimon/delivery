@@ -13,7 +13,9 @@ import { ApiService } from './../api.service';
 
 const routes: Routes = [
 
-  { path: '', component: ListComponent}
+  { path: '', component: ListComponent},
+  { path: 'cat/:catId', component: ListComponent},
+  { path: 'subcat/:SubCatId', component: ListComponent}
 
 ];
 

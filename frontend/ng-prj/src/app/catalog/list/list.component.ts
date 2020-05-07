@@ -1,8 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from './../../../environments/environment';
-
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from './../../api.service';
 
 @Component({
@@ -14,16 +13,39 @@ export class ListComponent implements OnInit {
 
   productList = {results: []};
 
-  constructor(private http: HttpClient, private apiService: ApiService){
-    this.getProductList();
+  constructor(
+    private http: HttpClient, 
+    private apiService: ApiService,
+    private route: ActivatedRoute){
+    
+    this.route.params.subscribe(params => {
+      if (params.hasOwnProperty('catId')) {
+        this.getProductList({cat:params.catId});
+      }
+      else if (params.hasOwnProperty('SubCatId')) {
+        this.getProductList({subcat:params.SubCatId});
+      }
+      else {
+        this.getProductList({});
+      }
+      
+    });
+    // this.router.events.subscribe((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //      // console.log(this.route.snapshot.paramMap.get('catId'));
+
+
+    //   }
+      
+    // });
   }
 
   ngOnInit() {
   }
 
-  getProductList() {
+  getProductList(pars) {
 
-      this.apiService.getProduclList().subscribe((res: any) => {
+      this.apiService.getProduclList(pars).subscribe((res: any) => {
         this.productList = res;
     });
 

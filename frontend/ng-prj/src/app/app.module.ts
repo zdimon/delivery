@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule
 
   ],
   providers: [],

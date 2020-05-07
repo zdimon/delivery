@@ -9,7 +9,19 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getProduclList() {
+  getProduclList(pars) {
+    if(pars.hasOwnProperty('cat')){
+      return this.http.get(`${environment.backendUrl}v1/market/product_list?category=${pars.cat}`);
+    }
+    if(pars.hasOwnProperty('subcat')){
+      return this.http.get(`${environment.backendUrl}v1/market/product_list?subcategory=${pars.subcat}`);
+    }
     return this.http.get(`${environment.backendUrl}v1/market/product_list`);
   }
+
+  getCategoryList() {
+
+    return this.http.get(`${environment.backendUrl}v1/market/category_list`);
+  }
+
 }

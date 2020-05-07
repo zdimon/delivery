@@ -17,6 +17,29 @@
       <button mat-raised-button [routerLink]="'catalog'"  color="primary">Catalog</button>
       <button mat-raised-button  [routerLink]="'basket'" color="warn">Basket</button>
       <button mat-raised-button  [routerLink]="'profile'" color="warn">Profile</button>
+      <button mat-raised-button [matMenuTriggerFor]="category">Категории</button>
+
+      
+        <mat-menu #category="matMenu">
+          <ng-container *ngFor="let item of categories" >
+            <button 
+            mat-menu-item 
+            [routerLink]="['catalog/cat',item.id]"
+            [matMenuTriggerFor]="subitem">
+              {{ item.name }}
+            </button>
+            <mat-menu #subitem="matMenu">
+              <button 
+              *ngFor="let subitem of item.subcategory" 
+              [routerLink]="['catalog/subcat',subitem.id]"
+              mat-menu-item>
+                 {{ subitem.name }}
+              </button>
+            </mat-menu>
+          </ng-container>
+        </mat-menu>
+
+      
     </div>
 
 
