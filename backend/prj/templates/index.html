@@ -1,41 +1,47 @@
-<!doctype html>
+{% load render_bundle from webpack_loader %}
 
-<html lang="en">
+    <!doctype html>
+    <html lang="en">
     <head>
+        <base href="/">
+        <title>Angular/TypeScript Hello World Project</title>
         <meta charset="utf-8">
-
-        <title>Index page</title>
-        <script
-            src="https://code.jquery.com/jquery-3.5.0.min.js"
-            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-            crossorigin="anonymous"></script>
-        
-
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Angular Hello World Starter">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- <link href="assets/styles/styles.css" rel="stylesheet" /> -->
     </head>
-
     <body>
+        <header class="navbar navbar-inner navbar-fixed-top">
+            <nav class="container">
+                <div class="navbar-header">
+                  <span class="app-title"></span>
+                </div>
+            </nav>
+        </header>
 
-        <button id="connect_button">Connect with socket</button>
+        <main class="container">
+            <app-root>
+                Loading...
+            </app-root>
+            <br /><br />
+        </main>
 
-        <input type="text" id="message_text" />
+        <footer>
+            <div class="navbar navbar-fixed-bottom">
+                <div class="navbar-inner footer">
+                    <div class="container">
+                        <footer>
 
-        <button id="send_message_button">Send message to server by web-socket</button>
-
-        <script>
-            var ws;
-            $('#connect_button').click(function() {
-                ws = new WebSocket('ws://localhost:8787/market');
-                ws.onmessage = function(event) {
-                    console.log(event.data);
-                }
-            });
-
-            $('#send_message_button').click(function() {
-                 var message = $('#message_text').val();
-                 ws.send(JSON.stringify({"message": message}));
-
-            })
-
-        </script>
-    </body>
-</html>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% render_bundle 'runtime' %}
+    {% render_bundle 'polyfills' %}
+    {% render_bundle 'styles' %}
+    {% render_bundle 'vendor' %}
+    {% render_bundle 'main' %}
+    </html>

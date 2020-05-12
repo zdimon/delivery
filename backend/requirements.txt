@@ -15,3 +15,4 @@ requests
 easy-thumbnails
 django-image-cropping==1.4.0
 django-cors-headers
+django-webpack-loader==0.7.0

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'image_cropping' ,
     'corsheaders',
+    'webpack_loader'
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+
 DATA_DIR = os.path.join(BASE_DIR,'../init_data')
 
 ASGI_APPLICATION = "market.ws_route_app.application"
@@ -142,3 +147,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
 BACKEND_URL = 'http://localhost:8787'
+
+WEBPACK_LOADER = {    
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'angular/',
+        'STATS_FILE': os.path.join(BASE_DIR,'static','webpack-stats-angular.json'),
+    }
+}
