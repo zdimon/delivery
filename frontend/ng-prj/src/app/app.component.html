@@ -15,6 +15,12 @@
       fxLayoutGap="10px"
     >
       <button mat-raised-button [routerLink]="'catalog'"  color="primary">Catalog</button>
+
+      <button *ngIf="!isAuth" mat-raised-button (click)="signInWithGoogle()"  color="primary">Google</button>
+
+      <button *ngIf="isAuth" mat-raised-button (click)="logout()"  color="primary">Выход</button>
+
+
       <button 
         mat-raised-button  
         [routerLink]="'basket'" 

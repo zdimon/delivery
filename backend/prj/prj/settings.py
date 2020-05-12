@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'image_cropping' ,
     'corsheaders',
+    'social_django',
+    'oauth2_provider',
+    'rest_framework_social_oauth2',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [

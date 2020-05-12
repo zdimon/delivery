@@ -11,8 +11,9 @@ from market.serializers.product import ProductSerializer
 
 class BasketInfoView(APIView):
     '''
-
     Получение информации о товарах в корзине.
+
+    _________________________________________
 
     '''
 

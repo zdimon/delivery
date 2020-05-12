@@ -1,4 +1,5 @@
 
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -17,6 +18,23 @@ import {MatIconModule} from '@angular/material/icon';
 import { BasketService } from './basket.service';
 import {MatBadgeModule} from '@angular/material/badge';
 
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider } from "angularx-social-login";
+import { AuthService } from "angularx-social-login";
+
+import { LoginService } from './login.service';
+ 
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("769722970237-8lhn2anpmkjjagu1monnvooetln72i2b.apps.googleusercontent.com")
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
+
 @NgModule({
   declarations: [
     AppComponent
@@ -34,7 +52,15 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatBadgeModule
 
   ],
-  providers: [BasketService],
+  providers: [
+    BasketService,
+    AuthService,
+    LoginService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -29,4 +29,8 @@ export class ApiService {
     return this.http.post(`${environment.backendUrl}v1/market/basket_list`,data);
   }
 
+  loginByGoogle(data){
+    return this.http.post(`${environment.backendUrl}v1/market/google_auth`,data);
+  }
+
 }

@@ -11,6 +11,12 @@ from market.serializers.subcategory import SubCategorySerializer
 from rest_framework.generics import ListAPIView
 
 class CategoryListView(ListAPIView):
+    '''
+    Список категорий.
+    
+    _________________
+
+    '''
     serializer_class = CategorySerializer
     pagination_class = None
 
