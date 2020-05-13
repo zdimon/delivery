@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from market.serializers.init_serializer import InitSerializer
 from drf_yasg.utils import swagger_auto_schema
+from market.serializers.user_serializer import UserProfileSerializer
 
 class InitView(APIView):
     '''
@@ -21,7 +22,7 @@ class InitView(APIView):
     def get(self, request, format=None):
         try:
             token = Token.objects.get(user=request.user)
-            resp = InitSerializer({"token": token.key}).data
+            resp = InitSerializer({"token": token.key, "user": UserProfileSerializer(request.user.userprofile).data}).data
         except Exception as e:
              resp = {"status": 1, "message": str(e)}
         return Response(resp)

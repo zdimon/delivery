@@ -29,8 +29,7 @@ router.register(r'category', CategoryViewSet)
 from market.views.index import index
 
 urlpatterns = [
-    path('', index),
-    path('<slug:slug>', index),
+
     path('admin/', admin.site.urls),
     path('v1/',include([
         path('generic/',include(router.urls)),
@@ -38,6 +37,8 @@ urlpatterns = [
     ])),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('doc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('', index),
+    path('catalog', index),
 ]
 
 

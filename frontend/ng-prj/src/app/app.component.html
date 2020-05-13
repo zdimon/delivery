@@ -24,7 +24,7 @@
         matBadgePosition="before" 
         matBadgeColor="accent"
         >
-        <mat-icon>add_shopping_cart</mat-icon>
+        <!-- <mat-icon>add_shopping_cart</mat-icon> -->
         Корзина
       </button>
 
@@ -33,6 +33,10 @@
 
 
       <button *ngIf="!isAuth" mat-raised-button (click)="signInWithGoogle()"  color="primary">Google</button>
+
+      <ng-container *ngIf="user">
+          <img style="border-radius: 50%;" src="{{ user.get_small_image_url }}" />
+      </ng-container>
       
       <button *ngIf="isAuth" mat-raised-button (click)="logout()"  color="primary">Выход</button>
 

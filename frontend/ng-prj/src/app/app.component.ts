@@ -22,6 +22,7 @@ export class AppComponent {
   categories = [];
   basket = [];
   isAuth = false;
+  user = false;
 
   constructor(
     private apiService: ApiService,
@@ -39,11 +40,15 @@ export class AppComponent {
     );
 
     this.apiService.init().subscribe((data: any) => {
-      this.loginService.login({token: data.token});
+      this.loginService.login({token: data.token, user: data.user});
     });
 
     this.loginService.isAuth$.subscribe(data => {
        this.isAuth = data;
+    });
+
+    this.loginService.user$.subscribe((user: any) => {
+      this.user = user;
     });
 
 
