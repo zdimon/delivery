@@ -32,8 +32,11 @@
       <button mat-raised-button [matMenuTriggerFor]="category">Категории</button>
 
 
-
+      <button *ngIf="!isAuth" mat-raised-button (click)="signInWithGoogle()"  color="primary">Google</button>
       
+      <button *ngIf="isAuth" mat-raised-button (click)="logout()"  color="primary">Выход</button>
+
+
         <mat-menu #category="matMenu">
           <ng-container *ngFor="let item of categories" >
             <button 

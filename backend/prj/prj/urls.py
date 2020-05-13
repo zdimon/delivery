@@ -30,6 +30,7 @@ from market.views.index import index
 
 urlpatterns = [
     path('', index),
+    path('<slug:slug>', index),
     path('admin/', admin.site.urls),
     path('v1/',include([
         path('generic/',include(router.urls)),
