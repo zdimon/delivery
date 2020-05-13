@@ -10,24 +10,36 @@ import {MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ApiService } from './../api.service';
+import { AddComponent } from './add/add.component';
+
+import { FormsModule } from '@angular/forms';
+
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 
 const routes: Routes = [
 
   { path: '', component: ListComponent},
   { path: 'cat/:catId', component: ListComponent},
-  { path: 'subcat/:SubCatId', component: ListComponent}
+  { path: 'subcat/:SubCatId', component: ListComponent},
+  { path: 'add', component: AddComponent}
 
 ];
 
 @NgModule({
-  declarations: [ListComponent],
+  declarations: [ListComponent, AddComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     MatButtonModule,
     MatCardModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule,
 
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [
     ApiService

@@ -39,6 +39,8 @@ urlpatterns = [
     path('doc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('', index),
     path('catalog', index),
+    path('catalog/add', index),
+
 ]
 
 
