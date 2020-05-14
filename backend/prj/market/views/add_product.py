@@ -3,6 +3,8 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.parsers import MultiPartParser
+from django.core.files.base import ContentFile
+import base64
 
 from market.serializers.product import ProductSerializer, AddProductRequestSerializer
 from market.models import Product, Category, SubCategory

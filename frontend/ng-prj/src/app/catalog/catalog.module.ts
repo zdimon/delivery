@@ -17,6 +17,9 @@ import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
+import { CameraComponent } from './camera/camera.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 const routes: Routes = [
 
@@ -28,7 +31,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ListComponent, AddComponent],
+  declarations: [ListComponent, AddComponent, CameraComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -39,10 +42,14 @@ const routes: Routes = [
 
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [
     ApiService
+  ],
+  entryComponents: [
+    CameraComponent
   ]
 })
 export class CatalogModule { }

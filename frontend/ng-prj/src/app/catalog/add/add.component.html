@@ -36,6 +36,10 @@
     <p>
         <button type="button" mat-raised-button (click)="fileInput.click()">Выбрать файл</button>
         <input  [(ngModel)]="filecomp" name="filecomp"  hidden (change)="onImageChanged($event)" #fileInput type="file" id="file">
+    
+        <button type="button" mat-raised-button (click)="addImgFromCam()">
+            Сделать фото с камеры.
+        </button>
     </p>
 
       <button type="submit" (click)="submitForm()" mat-raised-button color="accent">Добавить</button>

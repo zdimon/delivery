@@ -7,6 +7,8 @@ from market.views.google_auth import GoogleView
 from market.views.init import InitView
 from market.views.add_product import AddProductView
 
+
+
 urlpatterns = [ 
         path('userlogin',AuthView.as_view()),
         path('category_list',CategoryListView.as_view()),
