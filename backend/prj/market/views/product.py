@@ -9,7 +9,7 @@ from market.filters import ProductFilter
 from market.serializers.product import ProductSerializer
 
 class ProductListView(ListModelMixin,GenericAPIView):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by('-id')
     serializer_class = ProductSerializer
     filterset_class = ProductFilter
     def get(self,request, *args, **kwargs):

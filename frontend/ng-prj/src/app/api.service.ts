@@ -33,4 +33,12 @@ export class ApiService {
     return this.http.post(`${environment.backendUrl}v1/market/google_auth`,data);
   }
 
+  init() {
+    return this.http.get(`${environment.backendUrl}v1/market/init`);
+  }
+
+  addProduct(data){
+    return this.http.post(`${environment.backendUrl}v1/market/add_product`,data);
+  }
+
 }

@@ -1,16 +1,12 @@
 from django.contrib import admin
-from market.models import Provider, Consumer, Category, SubCategory, Product, Order, OrderProduct, Store
+from market.models import UserProfile, Category, SubCategory, Product, Order, OrderProduct, Store
 
-class ProviderAdmin(admin.ModelAdmin):
-    pass
+class UserProfileAdim(admin.ModelAdmin):
+    list_display = ['get_small_image', 'username']
 
-admin.site.register(Provider, ProviderAdmin)
+admin.site.register(UserProfile, UserProfileAdim)
 
 
-class ConsumerAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Consumer, ConsumerAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'image_tag']

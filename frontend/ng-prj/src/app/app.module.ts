@@ -22,6 +22,13 @@ import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { AuthService } from "angularx-social-login";
 
+import { AuthInterceptorService } from './auth-interceptor.service';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+
+export const interceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+];
+
 import { LoginService } from './login.service';
  
 const config = new AuthServiceConfig([
@@ -56,6 +63,7 @@ export function provideConfig() {
     BasketService,
     AuthService,
     LoginService,
+    interceptorProviders,
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
