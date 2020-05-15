@@ -29,6 +29,7 @@ class AddProductView(APIView):
         subcat = SubCategory.objects.get(pk=request.data.get('subcat'))
         p = Product()
         p.category = cat
+        p.user = request.user.userprofile
         p.subcategory = subcat
         p.name = request.data.get('name')
         

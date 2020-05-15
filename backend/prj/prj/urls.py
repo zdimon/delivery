@@ -40,6 +40,8 @@ urlpatterns = [
     path('', index),
     path('catalog', index),
     path('catalog/add', index),
+    path('profile/notify', index),
+
 
 ]
 

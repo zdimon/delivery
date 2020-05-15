@@ -37,7 +37,6 @@ class GoogleView(APIView):
             p.username = request.data['email']
             p.is_active = True
             p.set_password('123')
-            p.set_password('auth1auth2')
             p.save()
             token = Token.objects.create(user=p)
             # тянем картинку и сохраняем во временный файл

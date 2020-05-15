@@ -58,10 +58,8 @@ export class AppComponent {
   }
 
   signInWithGoogle(): void {
-    console.log('login with google');
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(res => {
        this.authService.authState.subscribe(user => {
-          
           this.apiService.loginByGoogle(user).subscribe((rez) => {
             this.loginService.login(rez);
           })

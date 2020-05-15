@@ -41,5 +41,12 @@ export class ApiService {
     return this.http.post(`${environment.backendUrl}v1/market/add_product`,data);
   }
 
+  submitBasket(data) {
+    return this.http.post(`${environment.backendUrl}v1/market/basket_submit`,data);
+  }
+
+  notifyList() {
+    return this.http.get(`${environment.backendUrl}v1/market/notification_list`);
+  }
 
 }

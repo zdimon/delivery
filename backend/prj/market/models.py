@@ -75,7 +75,7 @@ class Product(models.Model):
     image = ImageCropField(upload_to='product', null=True, blank=True)
     category = models.ForeignKey(Category,on_delete=models.SET_NULL, null=True, blank=True)
     subcategory = models.ForeignKey(SubCategory,on_delete=models.SET_NULL, null=True, blank=True)
-
+    user = models.ForeignKey(UserProfile,on_delete=models.CASCADE, null=True, blank=True)
     cropping = ImageRatioField('image', '150x150')
 
     @property
@@ -141,3 +141,13 @@ class OrderProduct(models.Model):
     class Meta:
         verbose_name = 'OrderProduct'
         verbose_name_plural = 'OrderProducts'
+
+class Notification(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE, null=True, blank=True)
+    provider = models.ForeignKey(UserProfile,on_delete=models.CASCADE, null=True, blank=True, related_name='provider')
+    consumer = models.ForeignKey(UserProfile,on_delete=models.CASCADE, null=True, blank=True, related_name='consumer')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Notification'
+        verbose_name_plural = 'Notifications'

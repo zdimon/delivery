@@ -32,6 +32,9 @@
       <button mat-raised-button [matMenuTriggerFor]="category">Категории</button>
 
 
+      <button mat-raised-button [routerLink]="['profile/notify']">Уведомления</button>
+
+
       <button *ngIf="!isAuth" mat-raised-button (click)="signInWithGoogle()"  color="primary">Google</button>
 
       <ng-container *ngIf="user">

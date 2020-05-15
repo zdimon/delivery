@@ -1,6 +1,8 @@
 from django.contrib import admin
 from market.models import UserProfile, Category, SubCategory, Product, Order, OrderProduct, Store
 
+from market.models import Notification
+
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ['get_small_image', 'name', 'username']
 
@@ -27,20 +29,27 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Product, ProductAdmin)
 
 
+class OrderProductAdmin(admin.TabularInline):
+    model = OrderProduct
+    
 class OrderAdmin(admin.ModelAdmin):
-    pass
+    inlines = [OrderProductAdmin,]
+    list_display = ['consumer', 'created_at']
+
 
 admin.site.register(Order, OrderAdmin)
 
 
-class OrderProductAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(OrderProduct, OrderProductAdmin)
 
 class StoreAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Store, StoreAdmin)
+
+class NotificationAdmin(admin.ModelAdmin):
+    list_display = ['product', 'provider', 'consumer']
+
+admin.site.register(Notification, NotificationAdmin)
+
 
 

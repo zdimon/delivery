@@ -1,6 +1,21 @@
 <h1>Моя корзина</h1>
 
 
+<ng-container *ngIf="!isAuth">
+  <div style="text-align: center;">
+    <h2>Вам необходимо авторизоваться</h2>
+    <button  mat-raised-button (click)="signInWithGoogle()"  color="primary">Google</button>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="isAuth && basket.length > 0">
+  <div style="text-align: center;">
+    <button  mat-raised-button (click)="submitBasket()"  color="accent">
+      Отправить заказ
+    </button>
+  </div>
+</ng-container>
+
 <div id="app-center"  
 fxLayout="row wrap" 
 fxLayoutGap="10px" 
