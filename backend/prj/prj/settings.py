@@ -151,7 +151,7 @@ REST_FRAMEWORK = {
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
-BACKEND_URL = 'http://localhost:8787'
+
 
 WEBPACK_LOADER = {    
     'DEFAULT': {
@@ -167,3 +167,4 @@ CHANNEL_LAYERS = {
 }
 
 ALLOWED_HOSTS = ['*']
+from .local import *
