@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   backendUrl: 'https://delivery.webmonstr.com:8787/',
-  socketUrl: 'ws://delivery.webmonstr.com:8787',
+  socketUrl: 'wss://delivery.webmonstr.com:8787',
 };
 
 /*
