@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'http://delivery.webmonstr.com:8787/',
+  backendUrl: 'https://delivery.webmonstr.com:8787/',
   socketUrl: 'ws://delivery.webmonstr.com:8787',
 };
 
