@@ -38,11 +38,14 @@ class AddProductView(APIView):
             p.image = (request.data['image'])
 
         if "image_base64" in request.data:
-            format, imgstr = request.data.get('image_base64').split(';base64,')
-            ext = format.split('/')[-1]
-            data = ContentFile(base64.b64decode(imgstr))
-            file_name = '%s_user.%s' % (p.id,ext) 
-            p.image.save(file_name, data, save=True)
+            try:
+                format, imgstr = request.data.get('image_base64').split(';base64,')
+                ext = format.split('/')[-1]
+                data = ContentFile(base64.b64decode(imgstr))
+                file_name = '%s_user.%s' % (p.id,ext) 
+                p.image.save(file_name, data, save=True)
+            except:
+                pass
 
         p.save()
 

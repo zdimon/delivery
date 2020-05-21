@@ -1,5 +1,6 @@
 
 
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -26,6 +27,8 @@ import { LoginService } from './login.service';
 
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+
+import { SocketService } from './socket.service';
 
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
@@ -69,7 +72,8 @@ export function provideConfig() {
       useFactory: provideConfig
     },
     AuthInterceptorService,
-    interceptorProviders
+    interceptorProviders,
+    SocketService
   ],
   bootstrap: [AppComponent]
 })

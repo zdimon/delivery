@@ -159,3 +159,9 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR,'static','webpack-stats-angular.json'),
     }
 }
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}

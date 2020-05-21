@@ -1,6 +1,7 @@
 
 
 
+
 import { Component } from '@angular/core';
 
 import { ApiService } from './api.service';
@@ -11,6 +12,8 @@ import { AuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 
 import { LoginService } from './login.service';
+
+import { SocketService } from './socket.service';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +31,8 @@ export class AppComponent {
     private apiService: ApiService,
     private basketService: BasketService,
     private authService: AuthService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private socketService: SocketService
     ) { 
     this.apiService.getCategoryList().subscribe((res: any) => {
       this.categories = res;

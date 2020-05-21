@@ -11,6 +11,10 @@ from market.serializers.order import OrderSerializer
 
 from market.models import Notification
 
+from channels.layers import get_channel_layer
+channel_layer = get_channel_layer()
+from asgiref.sync import async_to_sync
+
 
 class BasketInfoView(APIView):
     '''
@@ -61,5 +65,7 @@ class BasketSubmitView(APIView):
             noty.consumer = request.user.userprofile
             noty.provider = product.user
             noty.save()
+        
+        async_to_sync(channel_layer.group_send)("notifications", {"type": "send_notify"})
             
         return Response(OrderSerializer(o).data)
